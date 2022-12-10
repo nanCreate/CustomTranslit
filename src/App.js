@@ -11,7 +11,6 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Custom Translit</h1>
-
 			<textarea
 				onChange={(e) => {
 					setText(e.target.value)
