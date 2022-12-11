@@ -1,10 +1,11 @@
 import './App.css'
 import {useState} from 'react'
+import TextAreaAutosize from 'react-textarea-autosize'
 
 function App() {
 	const [text, setText] = useState('')
 	const [textTranslit, setTextTranslit] = useState('')
-	const [previewStatus, setPreviewStatus] = useState(false)
+	const [previewStatus, setPreviewStatus] = useState(true)
 
 	const toCopy = (text) => {
 		setTextTranslit(text)
@@ -106,21 +107,26 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>Касtomный Transлит</h1>
-			<button onClick={togglePreview}>Показывать результат</button>
-			<textarea
-				onChange={(e) => {
-					setText(e.target.value)
-					toCopy(translit(e.target.value))
-				}}
-				value={text}
-				cols="80"
-				rows="20"
-				autoFocus={true}
-				placeholder={'Начинайте вводить текст'}
-			/>
+			<header>Custom Translit</header>
 
-			<div className="Container">{previewStatus ? <pre>{textTranslit}</pre> : undefined}</div>
+			<aside>
+				<button onClick={togglePreview}>👁️</button>
+			</aside>
+
+			<div className="TranslateOriginal">
+				<TextAreaAutosize
+					onChange={(e) => {
+						setText(e.target.value)
+						toCopy(translit(e.target.value))
+					}}
+					value={text}
+					autoFocus={true}
+					placeholder={'Начинайте вводить текст'}
+					className={'Textarea'}
+				/>
+			</div>
+
+			<div className="TranslateNew">{previewStatus ? <pre>{textTranslit}</pre> : undefined}</div>
 		</div>
 	)
 }

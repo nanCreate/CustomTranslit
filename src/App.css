@@ -1,31 +1,74 @@
 .App {
-  text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    grid-column-end: 100vh;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas:
+            'header header'
+            'menu content'
+            'menu footer';
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto fit-content(50%) 1fr;
+}
+
+header {
+    grid-area: header;
+    padding: 10px;
+    color: rgba(0,0,0,.6);
+}
+
+.TranslateOriginal {
+    overflow: auto;
+    grid-area: content;
+}
+
+aside {
+    grid-area: menu;
+}
+
+.TranslateNew {
+    overflow: auto;
+    grid-area: footer;
 }
 
 h1 {
-  font-family: "Fira Code", monospace;
+    font-family: "Fira Code", monospace;
 }
 
-textarea {
-  font-family: "Fira Code", monospace;
-  font-size: 15px;
-  border: 0;
-  box-sizing: border-box;
-  padding: 20px;
-  box-shadow: 0px 5px 20px 0px rgba(0,0,0,.3);
-  width: 100vw;
+.Textarea {
+    font-family: "Fira Code", monospace;
+    font-size: 15px;
+    border: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    resize: none;
 }
+
 textarea:focus {
-  outline: 0;
+    outline: 0;
 }
 
 pre {
-  font-family: "Fira Code", monospace;
-  font-size: 15px;
-  white-space: pre-wrap;
-  opacity: .8;
-  box-sizing: border-box;
-  padding: 20px;
-  width: 95vw;
-  text-align: left;
+    font-family: "Fira Code", monospace;
+    font-size: 15px;
+    white-space: pre-wrap;
+    opacity: .8;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+}
+
+button {
+    padding: 5px;
+    margin: 0;
+    font-size: 16pt;
+    background: rgba(0,0,0,0);
+    border: 0;
+    outline: none;
+}
+button:hover {
+    cursor: pointer;
 }
