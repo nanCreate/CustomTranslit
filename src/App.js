@@ -2,11 +2,14 @@ import './App.css'
 import {useState} from 'react'
 
 function App() {
+	const [text, setText] = useState('')
+	const [textTranslit, setTextTranslit] = useState('')
+	const [previewStatus, setPreviewStatus] = useState(false)
+
 	const toCopy = (text) => {
+		setTextTranslit(text)
 		navigator.clipboard.writeText(text)
 	}
-
-	const [text, setText] = useState('')
 
 	const translit = (word) => {
 		let answer = ''
@@ -17,11 +20,11 @@ function App() {
 			г: 'g',
 			д: 'd',
 			е: 'e',
-			ё: 'e',
-			ж: 'zh',
+			ё: 'ɵ',
+			ж: 'ƶ',
 			з: 'z',
 			и: 'i',
-			й: 'y',
+			й: 'j',
 			к: 'k',
 			л: 'l',
 			м: 'm',
@@ -33,17 +36,17 @@ function App() {
 			т: 't',
 			у: 'u',
 			ф: 'f',
-			х: 'h',
-			ц: 'c',
-			ч: 'ch',
-			ш: 'sh',
-			щ: 'sch',
-			ь: '',
-			ы: 'y',
+			х: 'x',
+			ц: 'ç',
+			ч: 'c',
+			ш: 'ş',
+			щ: 'sc',
+			ь: 'j',
+			ы: 'ь',
 			ъ: '',
 			э: 'e',
-			ю: 'yu',
-			я: 'ya',
+			ю: 'y',
+			я: 'ə',
 
 			А: 'A',
 			Б: 'B',
@@ -51,11 +54,11 @@ function App() {
 			Г: 'G',
 			Д: 'D',
 			Е: 'E',
-			Ё: 'E',
-			Ж: 'Zh',
+			Ё: 'Ɵ',
+			Ж: 'Ƶ',
 			З: 'Z',
 			И: 'I',
-			Й: 'Y',
+			Й: 'J',
 			К: 'K',
 			Л: 'L',
 			М: 'M',
@@ -67,21 +70,21 @@ function App() {
 			Т: 'T',
 			У: 'U',
 			Ф: 'F',
-			Х: 'H',
-			Ц: 'C',
-			Ч: 'Ch',
-			Ш: 'Sh',
-			Щ: 'Sch',
-			Ь: '',
-			Ы: 'Y',
+			Х: 'X',
+			Ц: 'Ç',
+			Ч: 'C',
+			Ш: 'Ş',
+			Щ: 'Sc',
+			Ь: 'J',
+			Ы: 'Ь',
 			Ъ: '',
 			Э: 'E',
-			Ю: 'Yu',
-			Я: 'Ya',
+			Ю: 'Y',
+			Я: 'Ə',
 		}
 
 		for (let i = 0; i < word.length; ++i) {
-			if (converter[word[i]] == undefined) {
+			if (converter[word[i]] === undefined) {
 				answer += word[i]
 			} else {
 				answer += converter[word[i]]
@@ -91,9 +94,20 @@ function App() {
 		return answer
 	}
 
+	const togglePreview = () => {
+		if (previewStatus) {
+			console.log('true')
+			setPreviewStatus(false)
+		} else {
+			console.log('false')
+			setPreviewStatus(true)
+		}
+	}
+
 	return (
 		<div className="App">
-			<h1>Custom Translit</h1>
+			<h1>Касtomный Transлит</h1>
+			<button onClick={togglePreview}>Показывать результат</button>
 			<textarea
 				onChange={(e) => {
 					setText(e.target.value)
@@ -105,6 +119,8 @@ function App() {
 				autoFocus={true}
 				placeholder={'Начинайте вводить текст'}
 			/>
+
+			<div className="Container">{previewStatus ? <pre>{textTranslit}</pre> : undefined}</div>
 		</div>
 	)
 }

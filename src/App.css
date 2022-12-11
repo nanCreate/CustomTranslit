@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+h1 {
+  font-family: "Fira Code", monospace;
+}
+
 textarea {
   font-family: "Fira Code", monospace;
   font-size: 15px;
@@ -9,8 +13,19 @@ textarea {
   box-sizing: border-box;
   padding: 20px;
   box-shadow: 0px 5px 20px 0px rgba(0,0,0,.3);
-  width: 95vw;
+  width: 100vw;
 }
 textarea:focus {
   outline: 0;
+}
+
+pre {
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+  white-space: pre-wrap;
+  opacity: .8;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 95vw;
+  text-align: left;
 }
