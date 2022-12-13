@@ -3,6 +3,7 @@ import {useState} from 'react'
 import TextAreaAutosize from 'react-textarea-autosize'
 import {setTest, test} from './redux/translitModels-reducer'
 import {useSelector, useDispatch} from 'react-redux'
+import {Button, InputText} from 'react-windows-ui'
 
 function App() {
 	const [text, setText] = useState('')

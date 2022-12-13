@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals'
 import store from './redux/store'
 import {Provider} from 'react-redux'
 
+import 'react-windows-ui/config/app-config.css'
+import 'react-windows-ui/dist/react-windows-ui.min.css'
+import 'react-windows-ui/icons/fonts/fonts.min.css'
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>

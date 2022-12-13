@@ -158,11 +158,6 @@ const translitModels = createSlice({
 	},
 })
 
-export const setTest = (text) => ({
-	type: 'SET-TEST',
-	text,
-})
-
 export const {test} = translitModels.actions
 
 export default translitModels.reducer
