@@ -1,7 +1,7 @@
 import './App.css'
 import {useState} from 'react'
 import TextAreaAutosize from 'react-textarea-autosize'
-import {test} from './redux/translitModels-reducer'
+import {setTest, test} from './redux/translitModels-reducer'
 import {useSelector, useDispatch} from 'react-redux'
 
 function App() {
@@ -14,11 +14,12 @@ function App() {
 		navigator.clipboard.writeText(text)
 	}
 
-	let translitModel = useSelector((state) => state.translitModels.soviet)
+	const translitModel = useSelector((state) => state.translitModels.gostB)
+	const appTitle = useSelector((state) => state.translitModels.title)
 	const dispatch = useDispatch()
 	const translit = (word, model) => {
 		let answer = ''
-		const converter = model
+		const converter = model.alphabet
 
 		for (let i = 0; i < word.length; ++i) {
 			if (converter[word[i]] === undefined) {
@@ -43,11 +44,11 @@ function App() {
 
 	return (
 		<div className="App">
-			<header>Custom Translit:</header>
+			<header>Custom Translit: {appTitle}</header>
 
 			<aside>
 				<button onClick={togglePreview}>👁️</button>
-				<button onClick={() => dispatch(test(textTranslit))}>🔬</button>
+				<button onClick={() => dispatch(test('Hello world'))}>🔬</button>
 			</aside>
 
 			<div className="TranslateOriginal">
