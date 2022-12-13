@@ -3,7 +3,7 @@ import {useState} from 'react'
 import TextAreaAutosize from 'react-textarea-autosize'
 import {setTest, test} from './redux/translitModels-reducer'
 import {useSelector, useDispatch} from 'react-redux'
-import {Button, InputText} from 'react-windows-ui'
+import {Button, InputText, NavBar, NavBarLink, NavPageContainer} from 'react-windows-ui'
 
 function App() {
 	const [text, setText] = useState('')
@@ -44,28 +44,49 @@ function App() {
 	}
 
 	return (
-		<div className="App">
-			<header>Custom Translit: {appTitle}</header>
-
-			<aside>
-				<button onClick={togglePreview}>👁️</button>
-				<button onClick={() => dispatch(test('Hello world'))}>🔬</button>
-			</aside>
-
-			<div className="TranslateOriginal">
-				<TextAreaAutosize
-					onChange={(e) => {
-						setText(e.target.value)
-						toCopy(translit(e.target.value, translitModel))
-					}}
-					value={text}
-					autoFocus={true}
-					placeholder={'Начинайте вводить текст'}
-					className={'Textarea'}
+		<div>
+			{/*<aside>*/}
+			<NavBar
+				title="Custom Translit"
+				shadowOnScroll={true}
+				titleBarMobile={
+					<div>
+						<span className="app-navbar-name">React-windows-ui</span>
+					</div>
+				}
+			>
+				<NavBarLink to="/" exact={true} text="Page1" icon={<i className="icons10-home"></i>} />
+				<NavBarLink
+					to="/settings"
+					exact={true}
+					text="Page1"
+					icon={<i className="icons10-home"></i>}
 				/>
-			</div>
+			</NavBar>
+			{/*<button onClick={togglePreview}>👁️</button>*/}
+			{/*<button onClick={() => dispatch(test('Hello world'))}>🔬</button>*/}
+			{/*</aside>*/}
 
-			<div className="TranslateNew">{previewStatus ? <pre>{textTranslit}</pre> : undefined}</div>
+			<NavPageContainer hasPadding={true} animateTransition={true}>
+				<div className="App">
+					<header>Custom Translit: {appTitle}</header>
+					<div className="TranslateOriginal">
+						<TextAreaAutosize
+							onChange={(e) => {
+								setText(e.target.value)
+								toCopy(translit(e.target.value, translitModel))
+							}}
+							value={text}
+							autoFocus={true}
+							placeholder={'Начинайте вводить текст'}
+							className={'Textarea'}
+						/>
+					</div>
+					<div className="TranslateNew">
+						{previewStatus ? <pre>{textTranslit}</pre> : undefined}
+					</div>
+				</div>
+			</NavPageContainer>
 		</div>
 	)
 }
