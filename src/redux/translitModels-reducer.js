@@ -108,7 +108,7 @@ const translitModels = createSlice({
 				ь: '‵',
 				ы: 'y‵',
 				ъ: '‶',
-				э: '\te‵',
+				э: 'e‵',
 				ю: 'yu',
 				я: 'ya',
 
