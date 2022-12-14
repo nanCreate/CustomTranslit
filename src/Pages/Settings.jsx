@@ -1,6 +1,6 @@
-import {Card, NavPageContainer, NavPageContainerInner, Switch} from 'react-windows-ui'
+import {Card, NavPageContainer, NavPageContainerInner, Select, Switch} from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {toggleAutoCopy} from '../redux/config-reducer'
+import {toggleAutoCopy, setLanguageModel} from '../redux/config-reducer'
 
 const SettingsPage = () => {
 	const configApp = useSelector((state) => state.config)
@@ -31,6 +31,19 @@ const SettingsPage = () => {
 							/>
 						</div>
 					</div>
+				</Card>
+
+				<p style={{fontWeight: '600'}}>Модель транслитирования</p>
+
+				<Card display="block">
+					<Select
+						defaultValue={configApp.languageModel}
+						onChange={(value) => dispatch(setLanguageModel(value))}
+						data={[
+							{label: 'ГОСТ 7.79-2000, система Б', value: 'gostB'},
+							{label: 'Советская', value: 'soviet'},
+						]}
+					/>
 				</Card>
 			</NavPageContainerInner>
 		</NavPageContainer>

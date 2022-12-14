@@ -6,8 +6,8 @@ import {useSelector} from 'react-redux'
 const Main = () => {
 	const [text, setText] = useState('')
 	const [textTranslit, setTextTranslit] = useState('')
-	const translitModel = useSelector((state) => state.translitModels.soviet)
 	const configApp = useSelector((state) => state.config)
+	const translitModel = useSelector((state) => state.translitModels)
 
 	const toCopy = (text) => {
 		setTextTranslit(text)
@@ -48,7 +48,7 @@ const Main = () => {
 					<TextAreaAutosize
 						onChange={(e) => {
 							setText(e.target.value)
-							toCopy(translit(e.target.value, translitModel))
+							toCopy(translit(e.target.value, translitModel[configApp.languageModel]))
 						}}
 						value={text}
 						autoFocus={true}

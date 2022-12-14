@@ -8,18 +8,17 @@ const configApp = createSlice({
 	},
 	reducers: {
 		toggleAutoCopy: (state, action) => {
-			console.log('toggleAutoCopy HERE')
 			if (state.autoCopy) {
 				return {...state, autoCopy: false}
 			}
 			return {...state, autoCopy: true}
 		},
 		setLanguageModel: (state, action) => {
-			console.log('language model')
+			return {...state, languageModel: action.payload}
 		},
 	},
 })
 
-export const {toggleAutoCopy} = configApp.actions
+export const {toggleAutoCopy, setLanguageModel} = configApp.actions
 
 export default configApp.reducer
