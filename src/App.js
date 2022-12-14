@@ -1,16 +1,14 @@
 import './App.css'
 import {useState} from 'react'
 import TextAreaAutosize from 'react-textarea-autosize'
-import {setTest, test} from './redux/translitModels-reducer'
 import {useSelector, useDispatch} from 'react-redux'
 import {
-	Button,
-	InputText,
+	Alert,
+	Link,
 	NavBar,
 	NavBarLink,
-	NavBarSubMenu,
 	NavPageContainer,
-	RadioButton,
+	NavPageContainerInner,
 } from 'react-windows-ui'
 import {Route, Routes} from 'react-router-dom'
 
@@ -91,9 +89,40 @@ function App() {
 		)
 	}
 
+	//About page temp
+	const TempAboutPage = () => {
+		const [notification, setNotification] = useState(false)
+
+		return (
+			<NavPageContainer hasPadding={false} animateTransition={true}>
+				<Alert
+					title="Свинявый... плез..."
+					isVisible={notification}
+					message="Донат улетел оркам, наебали))"
+					onBackdropPress={() => {}}
+				>
+					<button
+						onClick={() => {
+							setNotification(false)
+						}}
+					>
+						OK
+					</button>
+				</Alert>
+
+				<NavPageContainerInner>
+					<h1>О программе</h1>
+					<p>
+						Custom Translit <br /> Версия: 1.0
+					</p>
+					<Link to={'#'}>Лицензии</Link>
+				</NavPageContainerInner>
+			</NavPageContainer>
+		)
+	}
+
 	return (
 		<div>
-			{/*<aside>*/}
 			<NavBar
 				title="Custom Translit"
 				shadowOnScroll={true}
@@ -123,14 +152,11 @@ function App() {
 					icon={<i className="icons10-info"></i>}
 				/>
 			</NavBar>
-			{/*<button onClick={togglePreview}>👁️</button>*/}
-			{/*<button onClick={() => dispatch(test('Hello world'))}>🔬</button>*/}
-			{/*</aside>*/}
 
 			<Routes>
 				<Route path={'/'} element={<MainPage />} />
 				<Route path={'/settings'} element={<TempClearPage text={'page settings'} />} />
-				<Route path={'/about'} element={<TempClearPage text={'page about'} />} />
+				<Route path={'/about'} element={<TempAboutPage />} />} />
 			</Routes>
 		</div>
 	)
