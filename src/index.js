@@ -9,17 +9,15 @@ import {Provider} from 'react-redux'
 import 'react-windows-ui/config/app-config.css'
 import 'react-windows-ui/dist/react-windows-ui-11.min.css'
 import 'react-windows-ui/icons/fonts/fonts.min.css'
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, HashRouter} from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<React.StrictMode>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
-			<Provider store={store}>
-				<App />
-			</Provider>
-		</BrowserRouter>
-	</React.StrictMode>
+	<HashRouter>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</HashRouter>
 )
 
 window.store = store
