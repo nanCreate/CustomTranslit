@@ -7,7 +7,7 @@ import store from './redux/store'
 import {Provider} from 'react-redux'
 
 import 'react-windows-ui/config/app-config.css'
-import 'react-windows-ui/dist/react-windows-ui.min.css'
+import 'react-windows-ui/dist/react-windows-ui-11.min.css'
 import 'react-windows-ui/icons/fonts/fonts.min.css'
 import {BrowserRouter} from 'react-router-dom'
 

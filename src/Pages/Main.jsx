@@ -7,10 +7,14 @@ const Main = () => {
 	const [text, setText] = useState('')
 	const [textTranslit, setTextTranslit] = useState('')
 	const translitModel = useSelector((state) => state.translitModels.soviet)
+	const configApp = useSelector((state) => state.config)
 
 	const toCopy = (text) => {
 		setTextTranslit(text)
-		navigator.clipboard.writeText(text)
+
+		if (configApp.autoCopy) {
+			navigator.clipboard.writeText(text)
+		}
 	}
 	const translit = (word, model) => {
 		let answer = ''

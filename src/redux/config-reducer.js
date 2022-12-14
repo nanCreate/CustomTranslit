@@ -1,20 +1,25 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const configApp = createSlice({
-	name: 'translitModels',
+	name: 'configApp',
 	initialState: {
-		title: 'Default Title',
 		autoCopy: true,
+		languageModel: 'gostB',
 	},
 	reducers: {
-		updateTitleApp: (state, action) => {
-			console.log('TestReducer')
-			console.log(action.payload)
-			return {...state, title: action.payload}
+		toggleAutoCopy: (state, action) => {
+			console.log('toggleAutoCopy HERE')
+			if (state.autoCopy) {
+				return {...state, autoCopy: false}
+			}
+			return {...state, autoCopy: true}
+		},
+		setLanguageModel: (state, action) => {
+			console.log('language model')
 		},
 	},
 })
 
-export const {updateTitleApp} = configApp.actions
+export const {toggleAutoCopy} = configApp.actions
 
 export default configApp.reducer
