@@ -1,5 +1,6 @@
 {
   "name": "customtranslit",
+  "homepage": "https://nancreate.github.io/CustomTranslit/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

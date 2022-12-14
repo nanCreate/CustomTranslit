@@ -4,6 +4,7 @@ import TextAreaAutosize from 'react-textarea-autosize'
 import {useSelector, useDispatch} from 'react-redux'
 import {
 	Alert,
+	Button,
 	Link,
 	NavBar,
 	NavBarLink,
@@ -15,7 +16,7 @@ import {Route, Routes} from 'react-router-dom'
 function App() {
 	const [previewStatus, setPreviewStatus] = useState(true)
 
-	const translitModel = useSelector((state) => state.translitModels.gostB)
+	const translitModel = useSelector((state) => state.translitModels.soviet)
 	const appTitle = useSelector((state) => state.translitModels.title)
 	const dispatch = useDispatch()
 
@@ -56,7 +57,15 @@ function App() {
 		return (
 			<NavPageContainer hasPadding={true} animateTransition={true}>
 				<div className="App">
-					<header></header>
+					<header>
+						{/*<Button*/}
+						{/*	isLoading={false}*/}
+						{/*	onClick={() => {}}*/}
+						{/*	value="Копировать"*/}
+						{/*	icon={<i className="icons10-copy"></i>}*/}
+						{/*	type={'success-outline'}*/}
+						{/*/>*/}
+					</header>
 
 					<div className="TranslateOriginal">
 						<TextAreaAutosize
@@ -116,6 +125,7 @@ function App() {
 						Custom Translit <br /> Версия: 1.0
 					</p>
 					<Link to={'#'}>Лицензии</Link>
+					<p className={'light'}>💖 от nanCreate</p>
 				</NavPageContainerInner>
 			</NavPageContainer>
 		)
