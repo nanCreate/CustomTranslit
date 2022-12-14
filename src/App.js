@@ -1,136 +1,11 @@
 import './App.css'
-import {useState} from 'react'
-import TextAreaAutosize from 'react-textarea-autosize'
-import {useSelector, useDispatch} from 'react-redux'
-import {
-	Alert,
-	Button,
-	Link,
-	NavBar,
-	NavBarLink,
-	NavPageContainer,
-	NavPageContainerInner,
-} from 'react-windows-ui'
+import {NavBar, NavBarLink} from 'react-windows-ui'
 import {Route, Routes} from 'react-router-dom'
+import Main from './Pages/Main'
+import AboutPage from './Pages/About'
+import SettingsPage from './Pages/Settings'
 
 function App() {
-	const [previewStatus, setPreviewStatus] = useState(true)
-
-	const translitModel = useSelector((state) => state.translitModels.soviet)
-	const appTitle = useSelector((state) => state.translitModels.title)
-	const dispatch = useDispatch()
-
-	const togglePreview = () => {
-		if (previewStatus) {
-			console.log('true')
-			setPreviewStatus(false)
-		} else {
-			console.log('false')
-			setPreviewStatus(true)
-		}
-	}
-
-	// TO own Main page Component
-	const MainPage = () => {
-		const [text, setText] = useState('')
-		const [textTranslit, setTextTranslit] = useState('')
-
-		const toCopy = (text) => {
-			setTextTranslit(text)
-			navigator.clipboard.writeText(text)
-		}
-		const translit = (word, model) => {
-			let answer = ''
-			const converter = model.alphabet
-
-			for (let i = 0; i < word.length; ++i) {
-				if (converter[word[i]] === undefined) {
-					answer += word[i]
-				} else {
-					answer += converter[word[i]]
-				}
-			}
-
-			return answer
-		}
-
-		return (
-			<NavPageContainer hasPadding={true} animateTransition={true}>
-				<div className="App">
-					<header>
-						{/*<Button*/}
-						{/*	isLoading={false}*/}
-						{/*	onClick={() => {}}*/}
-						{/*	value="Копировать"*/}
-						{/*	icon={<i className="icons10-copy"></i>}*/}
-						{/*	type={'success-outline'}*/}
-						{/*/>*/}
-					</header>
-
-					<div className="TranslateOriginal">
-						<TextAreaAutosize
-							onChange={(e) => {
-								setText(e.target.value)
-								toCopy(translit(e.target.value, translitModel))
-							}}
-							value={text}
-							autoFocus={true}
-							placeholder={'Начинайте вводить текст'}
-							className={'Textarea'}
-						/>
-					</div>
-					<div className="TranslateNew">
-						{previewStatus ? <pre>{textTranslit}</pre> : undefined}
-					</div>
-				</div>
-			</NavPageContainer>
-		)
-	}
-
-	// Clear page temp
-	const TempClearPage = (props) => {
-		return (
-			<NavPageContainer hasPadding={true} animateTransition={true}>
-				<div className="App">
-					<header>{props.text}</header>
-				</div>
-			</NavPageContainer>
-		)
-	}
-
-	//About page temp
-	const TempAboutPage = () => {
-		const [notification, setNotification] = useState(false)
-
-		return (
-			<NavPageContainer hasPadding={false} animateTransition={true}>
-				<Alert
-					title="Свинявый... плез..."
-					isVisible={notification}
-					message="Донат улетел оркам, наебали))"
-					onBackdropPress={() => {}}
-				>
-					<button
-						onClick={() => {
-							setNotification(false)
-						}}
-					>
-						OK
-					</button>
-				</Alert>
-
-				<NavPageContainerInner>
-					<h1>О программе</h1>
-					<p>
-						Custom Translit <br /> Версия: 1.0
-					</p>
-					<Link to={'#'}>Лицензии</Link>
-					<p className={'light'}>💖 от nanCreate</p>
-				</NavPageContainerInner>
-			</NavPageContainer>
-		)
-	}
-
 	return (
 		<div>
 			<NavBar
@@ -164,9 +39,9 @@ function App() {
 			</NavBar>
 
 			<Routes>
-				<Route path={'/'} element={<MainPage />} />
-				<Route path={'/settings'} element={<TempClearPage text={'page settings'} />} />
-				<Route path={'/about'} element={<TempAboutPage />} />} />
+				<Route path={'/'} element={<Main />} />
+				<Route path={'/settings'} element={<SettingsPage />} />
+				<Route path={'/about'} element={<AboutPage />} />} />
 			</Routes>
 		</div>
 	)

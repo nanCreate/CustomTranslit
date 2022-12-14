@@ -4,6 +4,7 @@ const configApp = createSlice({
 	name: 'translitModels',
 	initialState: {
 		title: 'Default Title',
+		autoCopy: true,
 	},
 	reducers: {
 		updateTitleApp: (state, action) => {
