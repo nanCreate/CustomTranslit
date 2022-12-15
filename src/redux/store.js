@@ -5,10 +5,12 @@ import translitModelsReducer from './translitModels-reducer'
 import configReducer from './config-reducer'
 import storage from 'redux-persist/lib/storage'
 import {persistReducer, persistStore} from 'redux-persist'
+import mainPageReducer from './mainPage-reducer'
 
 const reducers = combineReducers({
 	translitModels: translitModelsReducer,
 	config: configReducer,
+	mainPage: mainPageReducer,
 })
 
 const persistConfig = {

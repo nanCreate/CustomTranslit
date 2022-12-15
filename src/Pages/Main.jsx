@@ -1,21 +1,16 @@
 import {useState} from 'react'
 import {NavPageContainer} from 'react-windows-ui'
 import TextAreaAutosize from 'react-textarea-autosize'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {setCurrentText, setTranslitedText} from '../redux/mainPage-reducer'
 
 const Main = () => {
-	const [text, setText] = useState('')
-	const [textTranslit, setTextTranslit] = useState('')
+	const mainPageState = useSelector((state) => state.mainPage)
+	const dispatch = useDispatch()
+
 	const configApp = useSelector((state) => state.config)
 	const translitModel = useSelector((state) => state.translitModels)
 
-	const toCopy = (text) => {
-		setTextTranslit(text)
-
-		if (configApp.autoCopy) {
-			navigator.clipboard.writeText(text)
-		}
-	}
 	const translit = (word, model) => {
 		let answer = ''
 		const converter = model.alphabet
@@ -28,7 +23,18 @@ const Main = () => {
 			}
 		}
 
-		return answer
+		dispatch(setTranslitedText(answer))
+
+		if (configApp.autoCopy) {
+			navigator.clipboard.writeText(answer)
+		}
+	}
+
+	const moveCaretAtEnd = (e) => {
+		const temp_value = e.target.value
+		e.target.value = ''
+		e.target.value = temp_value
+		translit(e.target.value, translitModel[configApp.languageModel])
 	}
 
 	return (
@@ -47,16 +53,17 @@ const Main = () => {
 				<div className="TranslateOriginal">
 					<TextAreaAutosize
 						onChange={(e) => {
-							setText(e.target.value)
-							toCopy(translit(e.target.value, translitModel[configApp.languageModel]))
+							dispatch(setCurrentText(e.target.value))
+							translit(e.target.value, translitModel[configApp.languageModel])
 						}}
-						value={text}
+						value={mainPageState.currentText}
 						autoFocus={true}
+						onFocus={moveCaretAtEnd}
 						placeholder={'Начинайте вводить текст'}
 						className={'Textarea'}
 					/>
 				</div>
-				<div className="TranslateNew">{<pre>{textTranslit}</pre>}</div>
+				<div className="TranslateNew">{<pre>{mainPageState.translitedText}</pre>}</div>
 			</div>
 		</NavPageContainer>
 	)
