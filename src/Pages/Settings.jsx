@@ -1,18 +1,41 @@
-import {Card, NavPageContainer, NavPageContainerInner, Select, Switch} from 'react-windows-ui'
+import {
+	Button,
+	Card,
+	LoaderBusy,
+	NavPageContainer,
+	NavPageContainerInner,
+	Select,
+	Switch,
+} from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
 import {toggleAutoCopy, setLanguageModel} from '../redux/config-reducer'
+import {useState} from 'react'
 
 const SettingsPage = () => {
 	const configApp = useSelector((state) => state.config)
 	const dispatch = useDispatch()
+	const [isLoading, setIsLoading] = useState(false)
+
+	const resetSettings = () => {
+		setIsLoading(true)
+		localStorage.clear()
+		window.location.reload()
+	}
 
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
+			<LoaderBusy
+				setTheme="light"
+				isLoading={isLoading}
+				display="fullscreen"
+				backgroundColor="#007fed"
+				title="Выполняется сброс..."
+			/>
+
 			<NavPageContainerInner>
 				<h1>Настройки</h1>
 
 				<p style={{fontWeight: '600'}}>Поведение</p>
-
 				<Card display="block">
 					<div className="app-link-compound">
 						<div className="app-link-compound-container">
@@ -34,7 +57,6 @@ const SettingsPage = () => {
 				</Card>
 
 				<p style={{fontWeight: '600'}}>Модель транслитирования</p>
-
 				<Card display="block">
 					<Select
 						defaultValue={configApp.languageModel}
@@ -44,6 +66,11 @@ const SettingsPage = () => {
 							{label: 'Советская', value: 'soviet'},
 						]}
 					/>
+				</Card>
+
+				<p style={{fontWeight: '600'}}>Общее</p>
+				<Card display="block">
+					<Button value={'Сбросить все настройки'} onClick={resetSettings} />
 				</Card>
 			</NavPageContainerInner>
 		</NavPageContainer>

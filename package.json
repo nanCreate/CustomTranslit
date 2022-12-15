@@ -18,6 +18,8 @@
     "react-textarea-autosize": "^8.4.0",
     "react-windows-ui": "^4.2.0",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
