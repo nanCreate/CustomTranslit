@@ -65,6 +65,9 @@ const SettingsPage = () => {
 						onChange={(value) => dispatch(setLanguageModel(value))}
 						data={[
 							{label: 'ГОСТ 7.79-2000, система Б', value: 'gostB'},
+							{label: 'ГОСТ 7.79-2000, система А', value: 'gostA'},
+							{label: 'Загранпаспорт (МИД №2113)', value: 'zagranMID'},
+							{label: 'Водительское удостоверение', value: 'voditelskiePrava'},
 							{label: 'Советская', value: 'soviet'},
 						]}
 					/>

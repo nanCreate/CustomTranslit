@@ -9,7 +9,7 @@ import {Provider} from 'react-redux'
 import 'react-windows-ui/config/app-config.css'
 import 'react-windows-ui/dist/react-windows-ui-11.min.css'
 import 'react-windows-ui/icons/fonts/fonts.min.css'
-import {BrowserRouter, HashRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 
 import {PersistGate} from 'redux-persist/integration/react'
 import {persistStore} from 'redux-persist'
