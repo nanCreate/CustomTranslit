@@ -1,18 +1,20 @@
 import {
 	Button,
 	Card,
+	ListItem,
 	LoaderBusy,
 	NavPageContainer,
 	NavPageContainerInner,
-	Select,
 	Switch,
 } from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
 import {toggleAutoCopy, setLanguageModel} from '../redux/config-reducer'
 import {useState} from 'react'
+import transliter from '../hooks/transliter'
 
 const SettingsPage = () => {
 	const configApp = useSelector((state) => state.config)
+	const translitModels = useSelector((state) => state.translitModels)
 	const dispatch = useDispatch()
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -23,6 +25,22 @@ const SettingsPage = () => {
 			window.location.reload()
 		}, 1000)
 	}
+
+	const listItemLanguageModels = translitModels.map((d) => {
+		const exampleText =
+			'Аа Бб Вв Гг Дд Ее Ёё Жж Зз Ии Йй Кк Лл Мм Нн Оо Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя'
+		const transliterText = transliter(exampleText, d.alphabet)
+		let isActivated = ''
+		if (d.name === configApp.languageModel) {
+			isActivated = ' (активно)'
+		}
+
+		return (
+			<div onClick={() => dispatch(setLanguageModel(d.name))} key={d.name}>
+				<ListItem title={d.title + isActivated} subtitle={transliterText} borderBottom={true} />
+			</div>
+		)
+	})
 
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
@@ -37,7 +55,7 @@ const SettingsPage = () => {
 			<NavPageContainerInner>
 				<h1>Настройки</h1>
 
-				<p style={{fontWeight: '600'}}>Поведение</p>
+				<h2>Поведение</h2>
 				<Card display="block">
 					<div className="app-link-compound">
 						<div className="app-link-compound-container">
@@ -58,22 +76,10 @@ const SettingsPage = () => {
 					</div>
 				</Card>
 
-				<p style={{fontWeight: '600'}}>Модель транслитирования</p>
-				<Card display="block">
-					<Select
-						defaultValue={configApp.languageModel}
-						onChange={(value) => dispatch(setLanguageModel(value))}
-						data={[
-							{label: 'ГОСТ 7.79-2000, система Б', value: 'gostB'},
-							{label: 'ГОСТ 7.79-2000, система А', value: 'gostA'},
-							{label: 'Загранпаспорт (МИД №2113)', value: 'zagranMID'},
-							{label: 'Водительское удостоверение', value: 'voditelskiePrava'},
-							{label: 'Советская', value: 'soviet'},
-						]}
-					/>
-				</Card>
+				<h2>Модель транслитирования</h2>
+				<Card>{listItemLanguageModels}</Card>
 
-				<p style={{fontWeight: '600'}}>Общее</p>
+				<h2>Общее</h2>
 				<Card display="block">
 					<Button value={'Сбросить все настройки'} onClick={resetSettings} />
 				</Card>

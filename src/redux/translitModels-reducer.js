@@ -2,9 +2,11 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const translitModels = createSlice({
 	name: 'translitModels',
-	initialState: {
-		soviet: {
-			name: 'Soviet Custom Model',
+
+	initialState: [
+		{
+			name: 'soviet',
+			title: 'Советская модель',
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -75,8 +77,9 @@ const translitModels = createSlice({
 				Я: 'Ə',
 			},
 		},
-		gostB: {
-			name: 'GOST Model B',
+		{
+			name: 'gostB',
+			title: 'ГОСТ 7.79-2000, система Б',
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -147,8 +150,9 @@ const translitModels = createSlice({
 				Я: 'Ya',
 			},
 		},
-		gostA: {
-			name: 'GOST Model A',
+		{
+			title: 'ГОСТ 7.79-2000, система А',
+			name: 'gostA',
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -219,8 +223,9 @@ const translitModels = createSlice({
 				Я: 'Ja',
 			},
 		},
-		zagranMID: {
-			name: 'Zagran MID',
+		{
+			title: 'Загранпаспорт (МИД №2113)',
+			name: 'zagranMID',
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -291,8 +296,9 @@ const translitModels = createSlice({
 				Я: 'Ia',
 			},
 		},
-		voditelskiePrava: {
-			name: 'Zagran MID',
+		{
+			title: 'Водительское удостоверение (МВД № 995)',
+			name: 'voditelskiePrava',
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -363,7 +369,7 @@ const translitModels = createSlice({
 				Я: 'Ia',
 			},
 		},
-	},
+	],
 	reducers: {
 		test: (state, action) => {
 			console.log('TestReducer')
