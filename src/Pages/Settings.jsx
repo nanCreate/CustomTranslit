@@ -76,8 +76,8 @@ const SettingsPage = () => {
 					</div>
 				</Card>
 
-				<h2>Модель транслитирования</h2>
-				<Card>{listItemLanguageModels}</Card>
+				{/*<h2>Модель транслитирования</h2>*/}
+				{/*<Card>{listItemLanguageModels}</Card>*/}
 
 				<h2>Общее</h2>
 				<Card display="block">

@@ -7,6 +7,7 @@ const translitModels = createSlice({
 		{
 			name: 'soviet',
 			title: 'Советская модель',
+			editable: false,
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -80,6 +81,7 @@ const translitModels = createSlice({
 		{
 			name: 'gostB',
 			title: 'ГОСТ 7.79-2000, система Б',
+			editable: false,
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -153,6 +155,7 @@ const translitModels = createSlice({
 		{
 			title: 'ГОСТ 7.79-2000, система А',
 			name: 'gostA',
+			editable: false,
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -226,6 +229,7 @@ const translitModels = createSlice({
 		{
 			title: 'Загранпаспорт (МИД №2113)',
 			name: 'zagranMID',
+			editable: false,
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -299,6 +303,7 @@ const translitModels = createSlice({
 		{
 			title: 'Водительское удостоверение (МВД № 995)',
 			name: 'voditelskiePrava',
+			editable: false,
 			alphabet: {
 				а: 'a',
 				б: 'b',
@@ -371,14 +376,22 @@ const translitModels = createSlice({
 		},
 	],
 	reducers: {
-		test: (state, action) => {
-			console.log('TestReducer')
-			console.log(action.payload)
-			return {...state, title: action.payload}
+		addTranslitModel: (state, action) => {
+			console.log(action)
+
+			return [
+				...state,
+				{
+					title: action.payload.title,
+					name: Date.now(),
+					editable: action.payload.editable,
+					alphabet: action.payload.alphabet,
+				},
+			]
 		},
 	},
 })
 
-export const {test} = translitModels.actions
+export const {addTranslitModel} = translitModels.actions
 
 export default translitModels.reducer

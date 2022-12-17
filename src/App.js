@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom'
 import Main from './Pages/Main'
 import AboutPage from './Pages/About'
 import SettingsPage from './Pages/Settings'
+import ModelEditor from './Pages/ModelEditor'
 
 function App() {
 	return (
@@ -23,7 +24,12 @@ function App() {
 					text="Транслит"
 					icon={<i className="icons10-keyboard"></i>}
 				/>
-
+				<NavBarLink
+					to="/editor"
+					exact={true}
+					text="Языковая модель"
+					icon={<i className="icons10-alphabet-sorting"></i>}
+				/>
 				<NavBarLink
 					to="/settings"
 					exact={true}
@@ -42,6 +48,9 @@ function App() {
 				<Route path={'/'} element={<Main />} />
 				<Route path={'/settings'} element={<SettingsPage />} />
 				<Route path={'/about'} element={<AboutPage />} />} />
+				<Route path={'/editor'} element={<ModelEditor />}>
+					<Route path=":action" element={<ModelEditor />} />
+				</Route>
 			</Routes>
 		</div>
 	)

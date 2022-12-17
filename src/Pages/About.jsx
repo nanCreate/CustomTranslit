@@ -24,7 +24,7 @@ const AboutPage = () => {
 			<NavPageContainerInner>
 				<h1>О программе</h1>
 				<p>
-					Custom Translit <br /> Версия: 1.0
+					Custom Translit <br /> Версия: призрачная :3
 				</p>
 				<Link to={'#'}>Лицензии</Link>
 				<p className={'light'}>💖 от nanCreate</p>

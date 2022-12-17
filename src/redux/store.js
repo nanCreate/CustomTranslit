@@ -6,17 +6,19 @@ import configReducer from './config-reducer'
 import storage from 'redux-persist/lib/storage'
 import {persistReducer} from 'redux-persist'
 import mainPageReducer from './mainPage-reducer'
+import draftNewModelReducer from './draftNewModel-reducer'
 
 const reducers = combineReducers({
 	translitModels: translitModelsReducer,
 	config: configReducer,
 	mainPage: mainPageReducer,
+	draftNewModel: draftNewModelReducer,
 })
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['config'],
+	whitelist: ['config', 'translitModels'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
