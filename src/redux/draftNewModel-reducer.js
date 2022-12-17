@@ -92,6 +92,7 @@ const draftNewModel = createSlice({
 	},
 })
 
-export const {setNewModelTitle, setDraftNewModelAlphabet} = draftNewModel.actions
+export const {setNewModelTitle, setDraftNewModelAlphabet, setDraftNewModelFull} =
+	draftNewModel.actions
 
 export default draftNewModel.reducer

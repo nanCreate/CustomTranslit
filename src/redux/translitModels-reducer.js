@@ -378,20 +378,22 @@ const translitModels = createSlice({
 	reducers: {
 		addTranslitModel: (state, action) => {
 			console.log(action)
-
 			return [
 				...state,
 				{
 					title: action.payload.title,
-					name: Date.now(),
+					name: action.payload.name,
 					editable: action.payload.editable,
 					alphabet: action.payload.alphabet,
 				},
 			]
 		},
+		replaceTranslitModel: (state, action) => {
+			return action.payload
+		},
 	},
 })
 
-export const {addTranslitModel} = translitModels.actions
+export const {addTranslitModel, replaceTranslitModel} = translitModels.actions
 
 export default translitModels.reducer

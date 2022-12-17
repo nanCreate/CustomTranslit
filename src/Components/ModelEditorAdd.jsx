@@ -1,12 +1,17 @@
 import {Button, Card, InputText} from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {setDraftNewModelAlphabet} from '../redux/draftNewModel-reducer'
-import {addTranslitModel} from '../redux/translitModels-reducer'
+import {
+	setDraftNewModelAlphabet,
+	setDraftNewModelFull,
+	setNewModelTitle,
+} from '../redux/draftNewModel-reducer'
+import {addTranslitModel, replaceTranslitModel} from '../redux/translitModels-reducer'
 import {Link} from 'react-router-dom'
 
 const ModelEditorAdd = (props) => {
 	const dispatch = useDispatch()
 	const val = useSelector((state) => state.draftNewModel)
+	const translitModels = useSelector((state) => state.translitModels)
 
 	const placeholder = ''
 	const width = 100
@@ -106,14 +111,31 @@ const ModelEditorAdd = (props) => {
 	))
 
 	const addModel = () => {
+		let newTranslitModelName = Date.now()
+		if (props.nameModel) {
+			newTranslitModelName = props.nameModel
+			const removedOldElement = translitModels.filter((e) => e.name != props.nameModel)
+			dispatch(replaceTranslitModel(removedOldElement))
+		}
+
 		dispatch(
-			addTranslitModel({title: 'Text', editable: true, name: Date.now(), alphabet: val.alphabet})
+			addTranslitModel({
+				title: val.title,
+				editable: true,
+				name: newTranslitModelName,
+				alphabet: val.alphabet,
+			})
 		)
 	}
 
 	return (
 		<Card>
 			<h3>Название модели</h3>
+			<InputText
+				placeholder="Введите заголовок"
+				value={val.title}
+				onChange={(e) => dispatch(setNewModelTitle(e.target.value))}
+			/>
 
 			<h3>Нижний регистр</h3>
 			{lowerCaseAlphabetItem}

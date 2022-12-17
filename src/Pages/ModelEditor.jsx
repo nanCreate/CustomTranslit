@@ -1,4 +1,5 @@
 import {
+	Button,
 	Card,
 	CommandBar,
 	CommandBarButton,
@@ -9,13 +10,15 @@ import {
 import transliter from '../hooks/transliter'
 import {setLanguageModel} from '../redux/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
-import {Link, useParams} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 import ModelEditorAdd from '../Components/ModelEditorAdd'
+import {setDraftNewModelFull} from '../redux/draftNewModel-reducer'
 
 const ModelEditor = () => {
 	const translitModels = useSelector((state) => state.translitModels)
 	const configApp = useSelector((state) => state.config)
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const listItemLanguageModels = translitModels.map((d) => {
 		const exampleText =
@@ -27,9 +30,44 @@ const ModelEditor = () => {
 		}
 
 		return (
-			<div onClick={() => dispatch(setLanguageModel(d.name))} key={d.name}>
-				<ListItem title={d.title + isActivated} subtitle={transliterText} borderBottom={true} />
-			</div>
+			<Card
+				key={d.name}
+				padding={10}
+				focused={true}
+				maxWidth={'none'}
+				display="flow-root"
+				margin={20}
+			>
+				<div onClick={() => dispatch(setLanguageModel(d.name))}>
+					<ListItem title={d.title + isActivated} subtitle={transliterText} borderBottom={true} />
+				</div>
+				<div style={{float: 'right'}}>
+					{isActivated ? (
+						<Button
+							onClick={() => {}}
+							value="Установлено"
+							disabled={true}
+							//icon={<i className="icons10-plus"></i>}
+						/>
+					) : (
+						<Button
+							onClick={() => dispatch(setLanguageModel(d.name))}
+							value="Установить"
+							//icon={<i className="icons10-plus"></i>}
+						/>
+					)}
+				</div>
+
+				<Button
+					onClick={() => {
+						navigate(d.name)
+					}}
+					tooltip="Редактировать"
+					icon={<i className="icons10-pencil"></i>}
+					value=""
+					style={{marginRight: '10px'}}
+				/>
+			</Card>
 		)
 	})
 
@@ -69,11 +107,14 @@ const ModelEditor = () => {
 		)
 	}
 
+	const forEditTranslitModel = translitModels.find((e) => e.name == actionRoute.action)
+	dispatch(setDraftNewModelFull(forEditTranslitModel))
+
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
 			<NavPageContainerInner>
 				<h2>Редактирование модели</h2>
-				<p>{actionRoute.action}</p>
+				<ModelEditorAdd nameModel={actionRoute.action} />
 			</NavPageContainerInner>
 		</NavPageContainer>
 	)
