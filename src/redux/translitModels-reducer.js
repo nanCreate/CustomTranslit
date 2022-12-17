@@ -391,9 +391,14 @@ const translitModels = createSlice({
 		replaceTranslitModel: (state, action) => {
 			return action.payload
 		},
+		removeTranslitModel: (state, action) => {
+			const modelName = action.payload
+			const findOldElement = state.filter((e) => e.name !== modelName)
+			return findOldElement
+		},
 	},
 })
 
-export const {addTranslitModel, replaceTranslitModel} = translitModels.actions
+export const {addTranslitModel, replaceTranslitModel, removeTranslitModel} = translitModels.actions
 
 export default translitModels.reducer

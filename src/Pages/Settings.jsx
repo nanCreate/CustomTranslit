@@ -1,20 +1,17 @@
 import {
 	Button,
 	Card,
-	ListItem,
 	LoaderBusy,
 	NavPageContainer,
 	NavPageContainerInner,
 	Switch,
 } from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {toggleAutoCopy, setLanguageModel} from '../redux/config-reducer'
+import {toggleAutoCopy} from '../redux/config-reducer'
 import {useState} from 'react'
-import transliter from '../hooks/transliter'
 
 const SettingsPage = () => {
 	const configApp = useSelector((state) => state.config)
-	const translitModels = useSelector((state) => state.translitModels)
 	const dispatch = useDispatch()
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -25,22 +22,6 @@ const SettingsPage = () => {
 			window.location.reload()
 		}, 1000)
 	}
-
-	const listItemLanguageModels = translitModels.map((d) => {
-		const exampleText =
-			'Аа Бб Вв Гг Дд Ее Ёё Жж Зз Ии Йй Кк Лл Мм Нн Оо Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя'
-		const transliterText = transliter(exampleText, d.alphabet)
-		let isActivated = ''
-		if (d.name === configApp.languageModel) {
-			isActivated = ' (активно)'
-		}
-
-		return (
-			<div onClick={() => dispatch(setLanguageModel(d.name))} key={d.name}>
-				<ListItem title={d.title + isActivated} subtitle={transliterText} borderBottom={true} />
-			</div>
-		)
-	})
 
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>

@@ -4,7 +4,8 @@ import {Route, Routes} from 'react-router-dom'
 import Main from './Pages/Main'
 import AboutPage from './Pages/About'
 import SettingsPage from './Pages/Settings'
-import ModelEditor from './Pages/ModelEditor'
+import Editor from './Pages/Editor'
+import Select from './Pages/Select'
 
 function App() {
 	return (
@@ -25,7 +26,7 @@ function App() {
 					icon={<i className="icons10-keyboard"></i>}
 				/>
 				<NavBarLink
-					to="/editor"
+					to="/select"
 					exact={true}
 					text="Языковая модель"
 					icon={<i className="icons10-alphabet-sorting"></i>}
@@ -48,8 +49,10 @@ function App() {
 				<Route path={'/'} element={<Main />} />
 				<Route path={'/settings'} element={<SettingsPage />} />
 				<Route path={'/about'} element={<AboutPage />} />} />
-				<Route path={'/editor'} element={<ModelEditor />}>
-					<Route path=":action" element={<ModelEditor />} />
+				<Route path={'/select'} element={<Select />} />} />
+				{/*<Route path={'/editor/new'} element={<Main />} />*/}
+				<Route path={'/editor'} element={<Editor />}>
+					<Route path=":action" element={<Editor />} />
 				</Route>
 			</Routes>
 		</div>

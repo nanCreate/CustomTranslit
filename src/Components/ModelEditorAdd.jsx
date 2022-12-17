@@ -1,10 +1,6 @@
 import {Button, Card, InputText} from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {
-	setDraftNewModelAlphabet,
-	setDraftNewModelFull,
-	setNewModelTitle,
-} from '../redux/draftNewModel-reducer'
+import {setDraftNewModelAlphabet, setNewModelTitle} from '../redux/draftNewModel-reducer'
 import {addTranslitModel, replaceTranslitModel} from '../redux/translitModels-reducer'
 import {Link} from 'react-router-dom'
 
@@ -114,8 +110,8 @@ const ModelEditorAdd = (props) => {
 		let newTranslitModelName = Date.now()
 		if (props.nameModel) {
 			newTranslitModelName = props.nameModel
-			const removedOldElement = translitModels.filter((e) => e.name != props.nameModel)
-			dispatch(replaceTranslitModel(removedOldElement))
+			const findOldElement = translitModels.filter((e) => e.name !== props.nameModel)
+			dispatch(replaceTranslitModel(findOldElement))
 		}
 
 		dispatch(
@@ -144,8 +140,8 @@ const ModelEditorAdd = (props) => {
 			{upperCaseAlphabetItem}
 
 			<Card>
-				<Link to={'/editor'}>
-					<Button value="Добавить новую модель" onClick={addModel} />
+				<Link to={'/select'}>
+					<Button value="Применить" onClick={addModel} />
 				</Link>
 			</Card>
 		</Card>
