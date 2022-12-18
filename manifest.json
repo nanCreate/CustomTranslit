@@ -4,8 +4,8 @@
   "theme_color": "#f32121",
   "background_color": "#d621f3",
   "display": "standalone",
-  "scope": ".",
-  "start_url": ".",
+  "scope": "/CustomTranslit/",
+  "start_url": "/CustomTranslit/",
   "icons": [
     {
       "src": "maskable.png",
