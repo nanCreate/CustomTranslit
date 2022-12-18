@@ -1,8 +1,8 @@
 {
-  "name": "Custom Translit 1",
+  "name": "Custom Translit",
   "short_name": "Custom Translit",
-  "theme_color": "#f32121",
-  "background_color": "#d621f3",
+  "theme_color": "#EEEEEE",
+  "background_color": "#002e52",
   "display": "standalone",
   "scope": "/CustomTranslit/",
   "start_url": "/CustomTranslit/",
