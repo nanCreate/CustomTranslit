@@ -5,6 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import store from './redux/store'
 import {Provider} from 'react-redux'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 import 'react-windows-ui/config/app-config.css'
 import 'react-windows-ui/dist/react-windows-ui.min.css'
@@ -27,7 +28,7 @@ root.render(
 	</HashRouter>
 )
 
-window.store = store
+serviceWorkerRegistration.register()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
