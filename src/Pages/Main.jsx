@@ -53,7 +53,7 @@ const Main = () => {
 						autoFocus={true}
 						onFocus={moveCaretAtEnd}
 						placeholder={'Начинайте вводить текст'}
-						className={'Textarea'}
+						className={'Textarea' + ' ' + configApp.theme}
 					/>
 				</div>
 				<div className="TranslateNew">{<pre>{mainPageState.translitedText}</pre>}</div>

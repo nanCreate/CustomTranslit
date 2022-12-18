@@ -1,13 +1,21 @@
 import './App.css'
-import {NavBar, NavBarLink} from 'react-windows-ui'
+import {Appearance, NavBar, NavBarLink} from 'react-windows-ui'
 import {Route, Routes} from 'react-router-dom'
 import Main from './Pages/Main'
 import AboutPage from './Pages/About'
 import SettingsPage from './Pages/Settings'
 import Editor from './Pages/Editor'
 import Select from './Pages/Select'
+import {useSelector} from 'react-redux'
 
 function App() {
+	const currentTheme = useSelector((state) => state.config.theme)
+	if (currentTheme === 'dark') {
+		Appearance.setDarkScheme(currentTheme)
+	} else {
+		Appearance.setLightScheme(currentTheme)
+	}
+
 	return (
 		<div>
 			<NavBar

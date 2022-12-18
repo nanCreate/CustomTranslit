@@ -4,10 +4,11 @@ import {
 	LoaderBusy,
 	NavPageContainer,
 	NavPageContainerInner,
+	Select,
 	Switch,
 } from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {toggleAutoCopy} from '../redux/config-reducer'
+import {setTheme, toggleAutoCopy} from '../redux/config-reducer'
 import {useState} from 'react'
 
 const SettingsPage = () => {
@@ -57,8 +58,19 @@ const SettingsPage = () => {
 					</div>
 				</Card>
 
-				{/*<h2>Модель транслитирования</h2>*/}
-				{/*<Card>{listItemLanguageModels}</Card>*/}
+				<h2>Оформление</h2>
+				<Card>
+					<Select
+						defaultValue={configApp.theme}
+						onChange={(theme) => {
+							dispatch(setTheme(theme))
+						}}
+						data={[
+							{label: 'Светлая', value: 'light'},
+							{label: 'Тёмная', value: 'dark'},
+						]}
+					/>
+				</Card>
 
 				<h2>Общее</h2>
 				<Card display="block">

@@ -37,6 +37,12 @@ header {
     width: 100%;
     overflow: hidden;
     resize: none;
+    background: rgba(252,255,0,0);
+}
+
+.light {color: #333}
+
+.dark {color: #eeeeee
 }
 
 textarea:focus {
