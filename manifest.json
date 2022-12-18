@@ -1,11 +1,11 @@
 {
-  "name": "Custom Translit",
+  "name": "Custom Translit 1",
   "short_name": "Custom Translit",
   "theme_color": "#f32121",
   "background_color": "#d621f3",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": ".",
+  "start_url": ".",
   "icons": [
     {
       "src": "maskable.png",
