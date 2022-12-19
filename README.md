@@ -1,73 +1,17 @@
-# Web Test
-[https://nancreate.github.io/CustomTranslit/](https://nancreate.github.io/CustomTranslit/)
+# Custom Translit
+Прогрессивное веб-приложение для транслитирования текста. Переводит кириллицу в латиницу по заданному шаблону.
 
-# Getting Started with Create React App
+Использовать: [https://nancreate.github.io/CustomTranslit/](https://nancreate.github.io/CustomTranslit/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Возможности
+- Выбор шаблона для конвертации кириллицы в латиницу. По умолчанию доступны модели: ГОСТ 7.79-2000 система А и Б, загранпаспорт (МИД №2113), водительское удостоверение (МВД №995), советская (неофициальная)
+- Автоматическое копирование результата в буфер обмена
+- Создать свой собственный шаблон для конвертации кириллицы
+- Работа без интернет-соединения
 
-## Available Scripts
+# Скриншоты
+![image](https://user-images.githubusercontent.com/110712717/208377075-92f6271c-dd4c-4caa-ba3f-9da9090bf751.png)
+![image](https://user-images.githubusercontent.com/110712717/208377309-975d58cb-1362-4628-aef6-334ee4780029.png)
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Зачем создано?
+На первых строчках поисковой выдачи по запросу «транслитирование русского» выдаётся очень много сервисов, которые не способны были удовлетворить мои потребности. А именно - возможность создать собственную таблицу для транслитирования текста. Поэтому я решил создать приложение, которое было бы способно удовлетворить мои потребности и элементарные удобства рода автоматического копирования в буфер обмена при вводе и просмотр результата конвертации в лайврежиме с удобным современным UI.
