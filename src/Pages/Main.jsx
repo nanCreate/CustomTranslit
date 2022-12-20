@@ -14,7 +14,7 @@ const Main = () => {
 
 	const currentModel = translitModels.find((e) => e.name === configApp.languageModel)
 
-	const toTanslit = (text, model) => {
+	const toTranslit = (text, model) => {
 		let textTranslited = transliter(text, model.alphabet)
 
 		dispatch(setTranslitedText(textTranslited))
@@ -25,8 +25,7 @@ const Main = () => {
 	}
 
 	useEffect(() => {
-		toTanslit(mainPageState.currentText, currentModel)
-		console.log('translit action')
+		toTranslit(mainPageState.currentText, currentModel)
 	}, [])
 	const moveCaretAtEnd = (e) => {
 		const temp_value = e.target.value
@@ -51,7 +50,7 @@ const Main = () => {
 					<TextAreaAutosize
 						onChange={(e) => {
 							dispatch(setCurrentText(e.target.value))
-							toTanslit(e.target.value, currentModel)
+							toTranslit(e.target.value, currentModel)
 						}}
 						value={mainPageState.currentText}
 						autoFocus={true}

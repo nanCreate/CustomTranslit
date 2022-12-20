@@ -2,6 +2,7 @@ import {
 	Button,
 	Card,
 	LoaderBusy,
+	MenuBar,
 	NavPageContainer,
 	NavPageContainerInner,
 	Select,
