@@ -26,6 +26,7 @@ const Main = () => {
 
 	useEffect(() => {
 		toTanslit(mainPageState.currentText, currentModel)
+		console.log('translit action')
 	}, [])
 	const moveCaretAtEnd = (e) => {
 		const temp_value = e.target.value

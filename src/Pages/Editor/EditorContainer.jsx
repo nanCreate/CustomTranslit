@@ -52,6 +52,7 @@ const EditorContainer = () => {
 		}
 
 		dispatch(addTranslitModel(preparingAlphabetModel))
+		dispatch(clearDraftModel())
 		navigate('/select')
 	}
 

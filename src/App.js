@@ -1,20 +1,21 @@
 import './App.css'
-import {Appearance, NavBar, NavBarLink} from 'react-windows-ui'
+import {NavBar, NavBarLink} from 'react-windows-ui'
 import {Route, Routes} from 'react-router-dom'
 import Main from './Pages/Main'
 import AboutPage from './Pages/About'
 import SettingsPage from './Pages/Settings'
 import EditorContainer from './Pages/Editor/EditorContainer'
 import Select from './Pages/Select'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {setTheme} from './redux/reducers/config-reducer'
+import {useEffect} from 'react'
 
 function App() {
 	const currentTheme = useSelector((state) => state.config.theme)
-	if (currentTheme === 'dark') {
-		Appearance.setDarkScheme(currentTheme)
-	} else {
-		Appearance.setLightScheme(currentTheme)
-	}
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(setTheme(currentTheme))
+	})
 
 	return (
 		<div>
