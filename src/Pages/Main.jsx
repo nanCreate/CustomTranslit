@@ -3,6 +3,7 @@ import TextAreaAutosize from 'react-textarea-autosize'
 import {useDispatch, useSelector} from 'react-redux'
 import {setCurrentText, setTranslitedText} from '../redux/reducers/mainPage-reducer'
 import transliter from '../hooks/transliter'
+import {useEffect} from 'react'
 
 const Main = () => {
 	const mainPageState = useSelector((state) => state.mainPage)
@@ -23,11 +24,13 @@ const Main = () => {
 		}
 	}
 
+	useEffect(() => {
+		toTanslit(mainPageState.currentText, currentModel)
+	}, [])
 	const moveCaretAtEnd = (e) => {
 		const temp_value = e.target.value
 		e.target.value = ''
 		e.target.value = temp_value
-		toTanslit(e.target.value, currentModel)
 	}
 
 	return (

@@ -1,9 +1,6 @@
-import {useState} from 'react'
-import {Alert, Link, NavPageContainer, NavPageContainerInner} from 'react-windows-ui'
+import {NavPageContainer, NavPageContainerInner} from 'react-windows-ui'
 
 const AboutPage = () => {
-	const [notification, setNotification] = useState(false)
-
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
 			<NavPageContainerInner>
