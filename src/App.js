@@ -4,7 +4,7 @@ import {Route, Routes} from 'react-router-dom'
 import Main from './Pages/Main'
 import AboutPage from './Pages/About'
 import SettingsPage from './Pages/Settings'
-import Editor from './Pages/Editor'
+import EditorContainer from './Pages/Editor/EditorContainer'
 import Select from './Pages/Select'
 import {useSelector} from 'react-redux'
 
@@ -58,9 +58,8 @@ function App() {
 				<Route path={'/settings'} element={<SettingsPage />} />
 				<Route path={'/about'} element={<AboutPage />} />} />
 				<Route path={'/select'} element={<Select />} />} />
-				{/*<Route path={'/editor/new'} element={<Main />} />*/}
-				<Route path={'/editor'} element={<Editor />}>
-					<Route path=":action" element={<Editor />} />
+				<Route path={'/editor'} element={<EditorContainer />}>
+					<Route path=":action" element={<EditorContainer />} />
 				</Route>
 			</Routes>
 		</div>

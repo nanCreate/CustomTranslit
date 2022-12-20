@@ -1,7 +1,7 @@
 import {Button, Card, InputText} from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {setDraftNewModelAlphabet, setNewModelTitle} from '../redux/draftNewModel-reducer'
-import {addTranslitModel, replaceTranslitModel} from '../redux/translitModels-reducer'
+import {setDraftNewModelAlphabet, setNewModelTitle} from '../redux/reducers/draftNewModel-reducer'
+import {addTranslitModel, replaceTranslitModel} from '../redux/reducers/translitModels-reducer'
 import {Link} from 'react-router-dom'
 
 const ModelEditorAdd = (props) => {

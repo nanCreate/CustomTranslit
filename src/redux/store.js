@@ -1,12 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {combineReducers} from 'redux'
 import thunk from 'redux-thunk'
-import translitModelsReducer from './translitModels-reducer'
-import configReducer from './config-reducer'
+import translitModelsReducer from './reducers/translitModels-reducer'
+import configReducer from './reducers/config-reducer'
 import storage from 'redux-persist/lib/storage'
 import {persistReducer} from 'redux-persist'
-import mainPageReducer from './mainPage-reducer'
-import draftNewModelReducer from './draftNewModel-reducer'
+import mainPageReducer from './reducers/mainPage-reducer'
+import draftNewModelReducer from './reducers/draftNewModel-reducer'
 
 const reducers = combineReducers({
 	translitModels: translitModelsReducer,
@@ -18,7 +18,7 @@ const reducers = combineReducers({
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['config', 'translitModels'],
+	whitelist: ['config', 'translitModels', 'draftNewModel'],
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

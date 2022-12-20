@@ -378,6 +378,13 @@ const translitModels = createSlice({
 	reducers: {
 		addTranslitModel: (state, action) => {
 			console.log(action)
+			if (!action.payload.title) {
+				action.payload.title = 'Моя модель'
+			}
+			if (!action.payload.name) {
+				action.payload.name = Date.now()
+			}
+
 			return [
 				...state,
 				{

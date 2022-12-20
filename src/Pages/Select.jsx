@@ -8,10 +8,10 @@ import {
 	NavPageContainerInner,
 } from 'react-windows-ui'
 import transliter from '../hooks/transliter'
-import {setLanguageModel} from '../redux/config-reducer'
+import {setLanguageModel} from '../redux/reducers/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
-import {removeTranslitModel} from '../redux/translitModels-reducer'
+import {removeTranslitModel} from '../redux/reducers/translitModels-reducer'
 
 const Select = () => {
 	const translitModels = useSelector((state) => state.translitModels)

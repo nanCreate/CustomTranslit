@@ -1,7 +1,7 @@
 import {NavPageContainer} from 'react-windows-ui'
 import TextAreaAutosize from 'react-textarea-autosize'
 import {useDispatch, useSelector} from 'react-redux'
-import {setCurrentText, setTranslitedText} from '../redux/mainPage-reducer'
+import {setCurrentText, setTranslitedText} from '../redux/reducers/mainPage-reducer'
 import transliter from '../hooks/transliter'
 
 const Main = () => {

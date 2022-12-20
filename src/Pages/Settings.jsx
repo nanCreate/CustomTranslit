@@ -8,7 +8,7 @@ import {
 	Switch,
 } from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {setTheme, toggleAutoCopy} from '../redux/config-reducer'
+import {setTheme, toggleAutoCopy} from '../redux/reducers/config-reducer'
 import {useState} from 'react'
 
 const SettingsPage = () => {
