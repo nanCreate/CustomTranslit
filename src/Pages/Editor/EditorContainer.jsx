@@ -41,7 +41,7 @@ const EditorContainer = () => {
 		let preparingAlphabetModel = {
 			title: draftState.title,
 			editable: true,
-			name: Date.now(),
+			name: Date.now().toString(),
 			alphabet: draftState.alphabet,
 		}
 
