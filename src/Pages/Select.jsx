@@ -20,8 +20,10 @@ const Select = () => {
 	const navigate = useNavigate()
 
 	const listItemLanguageModels = translitModels.map((d) => {
-		const exampleText =
-			'Аа Бб Вв Гг Дд Ее Ёё Жж Зз Ии Йй Кк Лл Мм Нн Оо Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя'
+		const exampleText = configApp.exampleText.content[configApp.exampleText.current]
+
+		// const exampleText =
+		// 	'Аа Бб Вв Гг Дд Ее Ёё Жж Зз Ии Йй Кк Лл Мм Нн Оо Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя'
 		const transliterText = transliter(exampleText, d.alphabet)
 		let isActivated = false
 		if (d.name === configApp.languageModel) {

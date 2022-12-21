@@ -7,6 +7,18 @@ const configApp = createSlice({
 		autoCopy: true,
 		languageModel: 'gostB',
 		theme: 'light',
+
+		exampleText: {
+			current: 0,
+			content: [
+				'Аа Бб Вв Гг Дд Ее Ёё Жж Зз Ии Йй Кк Лл Мм Нн Оо Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя',
+				'В чащах юга жил бы цитрус? Да, но фальшивый экземпляр!',
+				'Широкая электрификация южных губерний даст мощный толчок подъёму сельского хозяйства.',
+				'Съешь же ещё этих мягких французских булок да выпей чаю.',
+				'Официально заявляю читающим: даёшь подъем операции Ы! Хуже с ёлкой бог экспериментирует.',
+				'Съел бы ёж лимонный пьезокварц, где электрическая юла яшму с туфом похищает.',
+			],
+		},
 	},
 	reducers: {
 		toggleAutoCopy: (state, action) => {
@@ -26,9 +38,13 @@ const configApp = createSlice({
 		setLanguageModel: (state, action) => {
 			return {...state, languageModel: action.payload}
 		},
+		setCurrentExampleText: (state, action) => {
+			// const exampleText = {...state.exampleText,}
+			return {...state, exampleText: {...state.exampleText, current: action.payload}}
+		},
 	},
 })
 
-export const {toggleAutoCopy, setLanguageModel, setTheme} = configApp.actions
+export const {toggleAutoCopy, setLanguageModel, setTheme, setCurrentExampleText} = configApp.actions
 
 export default configApp.reducer
