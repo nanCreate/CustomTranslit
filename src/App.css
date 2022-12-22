@@ -30,8 +30,8 @@ header {
 }
 
 .Textarea {
-    font-family: "Fira Code", monospace;
-    font-size: 15px;
+    /*font-family: "Fira Code", monospace;*/
+    font-size: 15pt;
     border: 0;
     box-sizing: border-box;
     width: 100%;
@@ -50,8 +50,8 @@ textarea:focus {
 }
 
 pre {
-    font-family: "Fira Code", monospace;
-    font-size: 15px;
+    /*font-family: "Fira Code", monospace;*/
+    font-size: 15pt;
     white-space: pre-wrap;
     opacity: .8;
     box-sizing: border-box;

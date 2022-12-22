@@ -30,11 +30,11 @@ const Editor = (props) => {
 
 				<Card>
 					<Button value={'Применить'} onClick={props.handleSubmit} style={{marginRight: '10px'}} />
-					{/*<Button*/}
-					{/*	value={''}*/}
-					{/*	icon={<i className="icons10-eraser"></i>}*/}
-					{/*	onClick={props.handleReset}*/}
-					{/*/>*/}
+					<Button
+						value={''}
+						icon={<i className="icons10-eraser"></i>}
+						onClick={props.handleReset}
+					/>
 				</Card>
 			</NavPageContainerInner>
 		</NavPageContainer>

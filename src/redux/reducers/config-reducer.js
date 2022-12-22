@@ -7,6 +7,10 @@ const configApp = createSlice({
 		autoCopy: true,
 		languageModel: 'gostB',
 		theme: 'light',
+		fonts: {
+			current: 'monospace',
+			list: ['sans', 'sans-serif', 'monospace'],
+		},
 
 		exampleText: {
 			current: 0,
@@ -42,9 +46,13 @@ const configApp = createSlice({
 			// const exampleText = {...state.exampleText,}
 			return {...state, exampleText: {...state.exampleText, current: action.payload}}
 		},
+		setCurrentFont: (state, action) => {
+			return {...state, fonts: {...state.fonts, current: action.payload}}
+		},
 	},
 })
 
-export const {toggleAutoCopy, setLanguageModel, setTheme, setCurrentExampleText} = configApp.actions
+export const {toggleAutoCopy, setLanguageModel, setTheme, setCurrentExampleText, setCurrentFont} =
+	configApp.actions
 
 export default configApp.reducer

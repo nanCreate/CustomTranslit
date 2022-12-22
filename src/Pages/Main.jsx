@@ -57,9 +57,12 @@ const Main = () => {
 						onFocus={moveCaretAtEnd}
 						placeholder={'Начинайте вводить текст'}
 						className={'Textarea' + ' ' + configApp.theme}
+						style={{fontFamily: configApp.fonts.current}}
 					/>
 				</div>
-				<div className="TranslateNew">{<pre>{mainPageState.translitedText}</pre>}</div>
+				<div className="TranslateNew">
+					{<pre style={{fontFamily: configApp.fonts.current}}>{mainPageState.translitedText}</pre>}
+				</div>
 			</div>
 		</NavPageContainer>
 	)

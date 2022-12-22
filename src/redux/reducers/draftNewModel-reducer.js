@@ -94,7 +94,7 @@ const draftNewModel = createSlice({
 			return {...state, isNewElement: action.payload}
 		},
 		clearDraftModel: (state, action) => {
-			return initialState
+			return {...initialState, isNewElement: state.isNewElement, name: state.name}
 		},
 	},
 })

@@ -9,7 +9,12 @@ import {
 	Switch,
 } from 'react-windows-ui'
 import {useDispatch, useSelector} from 'react-redux'
-import {setCurrentExampleText, setTheme, toggleAutoCopy} from '../redux/reducers/config-reducer'
+import {
+	setCurrentExampleText,
+	setCurrentFont,
+	setTheme,
+	toggleAutoCopy,
+} from '../redux/reducers/config-reducer'
 import {useState} from 'react'
 
 const SettingsPage = () => {
@@ -41,6 +46,11 @@ const SettingsPage = () => {
 			</div>
 		)
 	})
+
+	const fontList = configApp.fonts.list.map((e) => ({label: e, value: e}))
+	const setNewCurrentFont = (name) => {
+		dispatch(setCurrentFont(name))
+	}
 
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
@@ -90,8 +100,19 @@ const SettingsPage = () => {
 					/>
 				</Card>
 
+				<h2>Шрифт</h2>
+				<Card>
+					<Select
+						defaultValue={configApp.fonts.current}
+						onChange={(name) => {
+							setNewCurrentFont(name)
+						}}
+						data={fontList}
+					/>
+				</Card>
+
 				<h2>Языковая модель</h2>
-				<p>Текст для предпросмотра</p>
+				<h3>Текст для предпросмотра</h3>
 				<Card>{previewItemList}</Card>
 
 				<h2>Общее</h2>
