@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate, useParams} from 'react-router-dom'
 import {
+	addNewSymbol,
 	clearDraftModel,
 	setDraftNewModelAlphabet,
 	setDraftNewModelFull,
@@ -61,6 +62,12 @@ const EditorContainer = () => {
 		console.log('clear')
 	}
 
+	const additionalElements = () => {
+		const additionalAlphabet = draftState.additionalAlphabet
+		console.log('here')
+		dispatch(addNewSymbol(additionalAlphabet))
+	}
+
 	return (
 		<Editor
 			draftState={draftState}
@@ -68,6 +75,7 @@ const EditorContainer = () => {
 			setDraftTitle={setDraftTitle}
 			handleSubmit={handleSubmit}
 			handleReset={handleReset}
+			additionalElements={additionalElements}
 		/>
 	)
 }

@@ -7,7 +7,7 @@ import {
 	NavPageContainer,
 	NavPageContainerInner,
 } from 'react-windows-ui'
-import transliter from '../hooks/transliter'
+import transliter from '../lib/transliter'
 import {setLanguageModel} from '../redux/reducers/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'

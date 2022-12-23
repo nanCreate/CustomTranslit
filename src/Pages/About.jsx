@@ -6,9 +6,8 @@ const AboutPage = () => {
 			<NavPageContainerInner>
 				<h1>О программе</h1>
 				<p>
-					Custom Translit <br /> Версия: рефакторная призрачная 3:
+					Custom Translit <br /> Версия: дополняемая :3
 				</p>
-				{/*<Link to={'#'}>Лицензии</Link>*/}
 				<p>💖 от nanCreate</p>
 			</NavPageContainerInner>
 		</NavPageContainer>

@@ -73,6 +73,31 @@ const initialState = {
 		Ю: '',
 		Я: '',
 	},
+	additionalAlphabet: {
+		Ў: '',
+		І: '',
+		Ї: '',
+		Ѣ: '',
+		Ѳ: '',
+		Ѕ: '',
+		Ђ: '',
+		Ћ: '',
+		Ѫ: '',
+		Ѧ: '',
+		Ѵ: '',
+
+		ў: '',
+		і: '',
+		ї: '',
+		ѣ: '',
+		ѳ: '',
+		ѕ: '',
+		ђ: '',
+		ћ: '',
+		ѫ: '',
+		ѧ: '',
+		ѵ: '',
+	},
 }
 
 const draftNewModel = createSlice({
@@ -96,6 +121,9 @@ const draftNewModel = createSlice({
 		clearDraftModel: (state, action) => {
 			return {...initialState, isNewElement: state.isNewElement, name: state.name}
 		},
+		addNewSymbol: (state, action) => {
+			return {...state, alphabet: {...state.alphabet, ...action.payload}}
+		},
 	},
 })
 
@@ -105,6 +133,7 @@ export const {
 	setDraftNewModelFull,
 	clearDraftModel,
 	setIsNewElement,
+	addNewSymbol,
 } = draftNewModel.actions
 
 export default draftNewModel.reducer
