@@ -1,4 +1,4 @@
-import {Button, CommandBar, ListItem, NavPageContainer} from 'react-windows-ui'
+import {Button, ButtonIcon, CommandBar, ListItem, NavPageContainer} from 'react-windows-ui'
 import transliter from '../lib/transliter'
 import {setLanguageModel} from '../redux/reducers/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
@@ -34,36 +34,75 @@ const Select = () => {
 					<ListItem
 						title={d.title}
 						subtitle={transliterText}
-						borderBottom={true}
-						ItemEndComponent={<div>hello</div>}
+						borderBottom={false}
+						ItemEndComponent={
+							<div>
+								<ButtonIcon
+									onClick={() => {
+										dispatch(removeTranslitModel(d.name))
+									}}
+									tooltip="Удалить"
+									icon={<i className="icons10-cross"></i>}
+								/>
+								<ButtonIcon
+									onClick={() => {
+										navigate('/editor/' + d.name)
+									}}
+									tooltip="Редактировать"
+									icon={<i className="icons10-pencil"></i>}
+								/>
+								<div style={{float: 'right'}}>
+									{isActivated ? (
+										<Button value="Установлено" disabled={true} />
+									) : (
+										<Button onClick={() => dispatch(setLanguageModel(d.name))} value="Установить" />
+									)}
+								</div>
+							</div>
+						}
 					/>
 				</div>
-				<div style={{float: 'right'}}>
-					{isActivated ? (
-						<Button value="Установлено" disabled={true} />
-					) : (
-						<Button onClick={() => dispatch(setLanguageModel(d.name))} value="Установить" />
-					)}
-				</div>
+				{/*<div style={{float: 'right'}}>*/}
+				{/*	{isActivated ? (*/}
+				{/*		<Button value="Установлено" disabled={true} />*/}
+				{/*	) : (*/}
+				{/*		<Button onClick={() => dispatch(setLanguageModel(d.name))} value="Установить" />*/}
+				{/*	)}*/}
+				{/*</div>*/}
 
-				<Button
-					onClick={() => {
-						dispatch(removeTranslitModel(d.name))
-					}}
-					tooltip="Удалить"
-					icon={<i className="icons10-cross"></i>}
-					value=""
-					style={{marginRight: '10px'}}
-				/>
-				<Button
-					onClick={() => {
-						navigate('/editor/' + d.name)
-					}}
-					tooltip="Редактировать"
-					icon={<i className="icons10-pencil"></i>}
-					value=""
-					style={{marginRight: '10px'}}
-				/>
+				{/*<ButtonIcon*/}
+				{/*	onClick={() => {*/}
+				{/*		dispatch(removeTranslitModel(d.name))*/}
+				{/*	}}*/}
+				{/*	tooltip="Удалить"*/}
+				{/*	icon={<i className="icons10-cross"></i>}*/}
+				{/*/>*/}
+				{/*<ButtonIcon*/}
+				{/*	onClick={() => {*/}
+				{/*		navigate('/editor/' + d.name)*/}
+				{/*	}}*/}
+				{/*	tooltip="Редактировать"*/}
+				{/*	icon={<i className="icons10-pencil"></i>}*/}
+				{/*/>*/}
+
+				{/*<Button*/}
+				{/*	onClick={() => {*/}
+				{/*		dispatch(removeTranslitModel(d.name))*/}
+				{/*	}}*/}
+				{/*	tooltip="Удалить"*/}
+				{/*	icon={<i className="icons10-cross"></i>}*/}
+				{/*	value=""*/}
+				{/*	style={{marginRight: '10px'}}*/}
+				{/*/>*/}
+				{/*<Button*/}
+				{/*	onClick={() => {*/}
+				{/*		navigate('/editor/' + d.name)*/}
+				{/*	}}*/}
+				{/*	tooltip="Редактировать"*/}
+				{/*	icon={<i className="icons10-pencil"></i>}*/}
+				{/*	value=""*/}
+				{/*	style={{marginRight: '10px'}}*/}
+				{/*/>*/}
 				{/*</Card>*/}
 			</>
 		)
