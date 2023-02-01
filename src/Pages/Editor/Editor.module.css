@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+
+}
+
+.symbol {
+    margin: 10px;
+    flex: 0 0.5 auto;
+}

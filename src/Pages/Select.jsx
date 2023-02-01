@@ -72,48 +72,6 @@ const Select = () => {
 						}
 					/>
 				</div>
-				{/*<div style={{float: 'right'}}>*/}
-				{/*	{isActivated ? (*/}
-				{/*		<Button value="Установлено" disabled={true} />*/}
-				{/*	) : (*/}
-				{/*		<Button onClick={() => dispatch(setLanguageModel(d.name))} value="Установить" />*/}
-				{/*	)}*/}
-				{/*</div>*/}
-
-				{/*<ButtonIcon*/}
-				{/*	onClick={() => {*/}
-				{/*		dispatch(removeTranslitModel(d.name))*/}
-				{/*	}}*/}
-				{/*	tooltip="Удалить"*/}
-				{/*	icon={<i className="icons10-cross"></i>}*/}
-				{/*/>*/}
-				{/*<ButtonIcon*/}
-				{/*	onClick={() => {*/}
-				{/*		navigate('/editor/' + d.name)*/}
-				{/*	}}*/}
-				{/*	tooltip="Редактировать"*/}
-				{/*	icon={<i className="icons10-pencil"></i>}*/}
-				{/*/>*/}
-
-				{/*<Button*/}
-				{/*	onClick={() => {*/}
-				{/*		dispatch(removeTranslitModel(d.name))*/}
-				{/*	}}*/}
-				{/*	tooltip="Удалить"*/}
-				{/*	icon={<i className="icons10-cross"></i>}*/}
-				{/*	value=""*/}
-				{/*	style={{marginRight: '10px'}}*/}
-				{/*/>*/}
-				{/*<Button*/}
-				{/*	onClick={() => {*/}
-				{/*		navigate('/editor/' + d.name)*/}
-				{/*	}}*/}
-				{/*	tooltip="Редактировать"*/}
-				{/*	icon={<i className="icons10-pencil"></i>}*/}
-				{/*	value=""*/}
-				{/*	style={{marginRight: '10px'}}*/}
-				{/*/>*/}
-				{/*</Card>*/}
 			</>
 		)
 	})
@@ -123,12 +81,12 @@ const Select = () => {
 			<NavPageContainer.Inner>
 				<h2>Языковая модель</h2>
 
-				<CommandBar>
-					{/*<CommandBarButton*/}
-					{/*	onClick={() => navigate('/editor/new')}*/}
-					{/*	value="Создать свою модель"*/}
-					{/*	icon={<i className="icons10-plus color-primary"></i>}*/}
-					{/*/>*/}
+				<CommandBar style={{marginBottom: '5px'}}>
+					<CommandBar.Button
+						onClick={() => navigate('/editor/new')}
+						value="Создать свою модель"
+						icon={<i className="icons10-plus color-primary"></i>}
+					/>
 				</CommandBar>
 
 				{/*<Card>{listItemLanguageModels}</Card>*/}
