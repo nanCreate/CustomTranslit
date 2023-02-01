@@ -1,12 +1,4 @@
-import {
-	Button,
-	Card,
-	CommandBar,
-	CommandBarButton,
-	ListItem,
-	NavPageContainer,
-	NavPageContainerInner,
-} from 'react-windows-ui'
+import {Button, CommandBar, ListItem, NavPageContainer} from 'react-windows-ui'
 import transliter from '../lib/transliter'
 import {setLanguageModel} from '../redux/reducers/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
@@ -29,16 +21,22 @@ const Select = () => {
 		}
 
 		return (
-			<Card
-				key={d.name}
-				padding={10}
-				focused={true}
-				maxWidth={'none'}
-				display="flow-root"
-				margin={20}
-			>
+			// <Card
+			// 	key={d.name}
+			// 	padding={10}
+			// 	focused={true}
+			// 	maxWidth={'none'}
+			// 	display="flow-root"
+			// 	margin={20}
+			// >
+			<>
 				<div onClick={() => dispatch(setLanguageModel(d.name))}>
-					<ListItem title={d.title} subtitle={transliterText} borderBottom={true} />
+					<ListItem
+						title={d.title}
+						subtitle={transliterText}
+						borderBottom={true}
+						ItemEndComponent={<div>hello</div>}
+					/>
 				</div>
 				<div style={{float: 'right'}}>
 					{isActivated ? (
@@ -66,25 +64,27 @@ const Select = () => {
 					value=""
 					style={{marginRight: '10px'}}
 				/>
-			</Card>
+				{/*</Card>*/}
+			</>
 		)
 	})
 
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
-			<NavPageContainerInner>
+			<NavPageContainer.Inner>
 				<h2>Языковая модель</h2>
 
 				<CommandBar>
-					<CommandBarButton
-						onClick={() => navigate('/editor/new')}
-						value="Создать свою модель"
-						icon={<i className="icons10-plus color-primary"></i>}
-					/>
+					{/*<CommandBarButton*/}
+					{/*	onClick={() => navigate('/editor/new')}*/}
+					{/*	value="Создать свою модель"*/}
+					{/*	icon={<i className="icons10-plus color-primary"></i>}*/}
+					{/*/>*/}
 				</CommandBar>
 
-				<Card>{listItemLanguageModels}</Card>
-			</NavPageContainerInner>
+				{/*<Card>{listItemLanguageModels}</Card>*/}
+				{listItemLanguageModels}
+			</NavPageContainer.Inner>
 		</NavPageContainer>
 	)
 }

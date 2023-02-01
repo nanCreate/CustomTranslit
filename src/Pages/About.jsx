@@ -1,15 +1,15 @@
-import {NavPageContainer, NavPageContainerInner} from 'react-windows-ui'
+import {NavPageContainer} from 'react-windows-ui'
 
 const AboutPage = () => {
 	return (
 		<NavPageContainer hasPadding={false} animateTransition={true}>
-			<NavPageContainerInner>
+			<NavPageContainer.Inner>
 				<h1>О программе</h1>
 				<p>
 					Custom Translit <br /> Версия: дополняемая и исправляемая :3
 				</p>
 				<p>💖 от nanCreate</p>
-			</NavPageContainerInner>
+			</NavPageContainer.Inner>
 		</NavPageContainer>
 	)
 }
