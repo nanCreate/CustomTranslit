@@ -1,0 +1,15 @@
+.buttons_container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: left;
+}
+
+.buttons_container__box {
+    margin: 0px;
+    flex: 0 1 auto;
+}
+
+.buttons_container__box:nth-child(3) {
+    margin: 10px;
+}

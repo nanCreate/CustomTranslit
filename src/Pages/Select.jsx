@@ -4,6 +4,7 @@ import {setLanguageModel} from '../redux/reducers/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {removeTranslitModel} from '../redux/reducers/translitModels-reducer'
+import s from './Select.module.css'
 
 const Select = () => {
 	const translitModels = useSelector((state) => state.translitModels)
@@ -36,27 +37,36 @@ const Select = () => {
 						subtitle={transliterText}
 						borderBottom={false}
 						ItemEndComponent={
-							<div>
-								<ButtonIcon
-									onClick={() => {
-										dispatch(removeTranslitModel(d.name))
-									}}
-									tooltip="Удалить"
-									icon={<i className="icons10-cross"></i>}
-								/>
-								<ButtonIcon
-									onClick={() => {
-										navigate('/editor/' + d.name)
-									}}
-									tooltip="Редактировать"
-									icon={<i className="icons10-pencil"></i>}
-								/>
-								<div style={{float: 'right'}}>
-									{isActivated ? (
-										<Button value="Установлено" disabled={true} />
-									) : (
-										<Button onClick={() => dispatch(setLanguageModel(d.name))} value="Установить" />
-									)}
+							<div className={s.buttons_container}>
+								<div className={s.buttons_container__box}>
+									<ButtonIcon
+										onClick={() => {
+											dispatch(removeTranslitModel(d.name))
+										}}
+										tooltip="Удалить"
+										icon={<i className="icons10-cross"></i>}
+									/>
+								</div>
+								<div className={s.buttons_container__box}>
+									<ButtonIcon
+										onClick={() => {
+											navigate('/editor/' + d.name)
+										}}
+										tooltip="Редактировать"
+										icon={<i className="icons10-pencil"></i>}
+									/>
+								</div>
+								<div className={s.buttons_container__box}>
+									<div style={{float: 'right'}}>
+										{isActivated ? (
+											<Button value="Установлено" disabled={true} />
+										) : (
+											<Button
+												onClick={() => dispatch(setLanguageModel(d.name))}
+												value="Установить"
+											/>
+										)}
+									</div>
 								</div>
 							</div>
 						}
