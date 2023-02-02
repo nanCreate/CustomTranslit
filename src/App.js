@@ -22,6 +22,7 @@ function App() {
 			<NavBar
 				title="Custom Translit"
 				shadowOnScroll={true}
+				collapsed={true}
 				titleBarMobile={
 					<div>
 						<span className="app-navbar-name">Custom Translit</span>

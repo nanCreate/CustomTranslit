@@ -53,7 +53,7 @@ const SettingsPage = () => {
 			<LoaderBusy
 				setTheme="light"
 				isLoading={isLoading}
-				display="fullscreen"
+				display="overlay"
 				backgroundColor="#007fed"
 				title="Выполняется сброс..."
 			/>
