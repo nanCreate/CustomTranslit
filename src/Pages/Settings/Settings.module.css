@@ -1,0 +1,11 @@
+.PrevStatusContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.PrevStatusBlock {
+    flex: 0 1 auto;
+    margin-right: 20px;
+}

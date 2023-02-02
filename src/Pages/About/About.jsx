@@ -6,7 +6,7 @@ const AboutPage = () => {
 			<NavPageContainer.Inner>
 				<h1>О программе</h1>
 				<p>
-					Custom Translit <br /> Версия: дополняемая и исправляемая :3
+					Custom Translit <br /> Версия: 11 интерфейсный :3
 				</p>
 				<p>💖 от nanCreate</p>
 			</NavPageContainer.Inner>

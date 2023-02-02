@@ -5,8 +5,9 @@ import {
 	setCurrentFont,
 	setTheme,
 	toggleAutoCopy,
-} from '../redux/reducers/config-reducer'
+} from '../../redux/reducers/config-reducer'
 import {useState} from 'react'
+import s from './Settings.module.css'
 
 const SettingsPage = () => {
 	const configApp = useSelector((state) => state.config)
@@ -31,7 +32,11 @@ const SettingsPage = () => {
 				<ListItem
 					title={d}
 					ItemEndComponent={
-						configApp.exampleText.current === index ? <p>Установлено</p> : undefined
+						configApp.exampleText.current === index ? (
+							<div className={s.PrevStatusContainer}>
+								<div className={s.PrevStatusBlock}>Установлено</div>
+							</div>
+						) : undefined
 					}
 				/>
 			</div>
@@ -105,6 +110,7 @@ const SettingsPage = () => {
 				<h2>Языковая модель</h2>
 				<h3>Текст для предпросмотра</h3>
 				{/*<Card>{previewItemList}</Card>*/}
+				{previewItemList}
 
 				<h2>Общее</h2>
 				{/*<Card display="block">*/}

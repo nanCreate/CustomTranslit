@@ -1,9 +1,9 @@
 import {Button, ButtonIcon, CommandBar, ListItem, NavPageContainer} from 'react-windows-ui'
-import transliter from '../lib/transliter'
-import {setLanguageModel} from '../redux/reducers/config-reducer'
+import transliter from '../../lib/transliter'
+import {setLanguageModel} from '../../redux/reducers/config-reducer'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {removeTranslitModel} from '../redux/reducers/translitModels-reducer'
+import {removeTranslitModel} from '../../redux/reducers/translitModels-reducer'
 import s from './Select.module.css'
 
 const Select = () => {

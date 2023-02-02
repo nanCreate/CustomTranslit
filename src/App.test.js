@@ -6,7 +6,7 @@ import {HashRouter} from 'react-router-dom'
 import React from 'react'
 import {PersistGate} from 'redux-persist/integration/react'
 import {persistStore} from 'redux-persist'
-import SettingsPage from './Pages/Settings'
+import SettingsPage from './Pages/Settings/Settings'
 let persistor = persistStore(store)
 test('renders learn react link', () => {
 	render(

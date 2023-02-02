@@ -1,7 +1,14 @@
 const transliter = (text, model) => {
-	return text
-		.split('')
-		.map((char) => model[char] || char)
-		.join('')
+	let result = ''
+
+	for (let i = 0; i < text.length; ++i) {
+		if (model[text[i]] === undefined) {
+			result += text[i]
+		} else {
+			result += model[text[i]]
+		}
+	}
+
+	return result
 }
 export default transliter
