@@ -11,7 +11,6 @@ const configApp = createSlice({
 			current: 'monospace',
 			list: ['sans', 'sans-serif', 'monospace'],
 		},
-
 		exampleText: {
 			current: 0,
 			content: [
@@ -23,6 +22,7 @@ const configApp = createSlice({
 				'Съел бы ёж лимонный пьезокварц, где электрическая юла яшму с туфом похищает.',
 			],
 		},
+		toggleMenu: false,
 	},
 	reducers: {
 		toggleAutoCopy: (state, action) => {
@@ -49,10 +49,26 @@ const configApp = createSlice({
 		setCurrentFont: (state, action) => {
 			return {...state, fonts: {...state.fonts, current: action.payload}}
 		},
+		toggleMenu: (state, action) => {
+			let toggleMenu
+			if (action.payload === 'true') {
+				toggleMenu = true
+			} else {
+				toggleMenu = false
+			}
+
+			return {...state, toggleMenu: toggleMenu}
+		},
 	},
 })
 
-export const {toggleAutoCopy, setLanguageModel, setTheme, setCurrentExampleText, setCurrentFont} =
-	configApp.actions
+export const {
+	toggleAutoCopy,
+	setLanguageModel,
+	setTheme,
+	setCurrentExampleText,
+	setCurrentFont,
+	toggleMenu,
+} = configApp.actions
 
 export default configApp.reducer

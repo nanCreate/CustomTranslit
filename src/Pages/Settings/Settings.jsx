@@ -5,9 +5,11 @@ import {
 	setCurrentFont,
 	setTheme,
 	toggleAutoCopy,
+	toggleMenu,
 } from '../../redux/reducers/config-reducer'
 import {useState} from 'react'
 import s from './Settings.module.css'
+import {toReloadApp} from '../../lib/reload'
 
 const SettingsPage = () => {
 	const configApp = useSelector((state) => state.config)
@@ -18,7 +20,7 @@ const SettingsPage = () => {
 		setIsLoading(true)
 		localStorage.clear()
 		setTimeout(() => {
-			window.location.reload()
+			toReloadApp()
 		}, 1000)
 	}
 
@@ -46,6 +48,11 @@ const SettingsPage = () => {
 	const fontList = configApp.fonts.list.map((e) => ({label: e, value: e}))
 	const setNewCurrentFont = (name) => {
 		dispatch(setCurrentFont(name))
+	}
+
+	const toToggleMenu = (type) => {
+		dispatch(toggleMenu(type))
+		toReloadApp()
 	}
 
 	return (
@@ -84,6 +91,7 @@ const SettingsPage = () => {
 
 				<h2>Оформление</h2>
 				{/*<Card>*/}
+				<h3>Тема</h3>
 				<Select
 					defaultValue={configApp.theme}
 					onChange={(theme) => {
@@ -94,6 +102,18 @@ const SettingsPage = () => {
 						{label: 'Тёмная', value: 'dark'},
 					]}
 				/>
+				<h3>Тип меню</h3>
+				<Select
+					defaultValue={configApp.toggleMenu.toString()}
+					data={[
+						{label: 'Компактное', value: 'true'},
+						{label: 'Развёрнутое', value: 'false'},
+					]}
+					onChange={(type) => {
+						toToggleMenu(type)
+					}}
+				/>
+
 				{/*</Card>*/}
 
 				<h2>Шрифт</h2>

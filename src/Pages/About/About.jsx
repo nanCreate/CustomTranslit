@@ -7,7 +7,7 @@ const AboutPage = () => {
 			<NavPageContainer.Inner>
 				<h1>О программе</h1>
 				<p>
-					Custom Translit <br /> Версия: 11 интерфейсный :3
+					Custom Translit <br /> Версия: Навигационная :3
 				</p>
 
 				<Accordion headerTitle="Лицензии" style={{width: '280px'}}>

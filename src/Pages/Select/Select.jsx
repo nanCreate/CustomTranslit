@@ -12,7 +12,7 @@ const Select = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
-	const listItemLanguageModels = translitModels.map((d) => {
+	const listItemLanguageModels = translitModels.map((d, index) => {
 		const exampleText = configApp.exampleText.content[configApp.exampleText.current]
 
 		const transliterText = transliter(exampleText, d.alphabet)
@@ -30,49 +30,45 @@ const Select = () => {
 			// 	display="flow-root"
 			// 	margin={20}
 			// >
-			<>
-				<div onClick={() => dispatch(setLanguageModel(d.name))}>
-					<ListItem
-						title={d.title}
-						subtitle={transliterText}
-						borderBottom={false}
-						ItemEndComponent={
-							<div className={s.buttons_container}>
-								<div className={s.buttons_container__box}>
-									<ButtonIcon
-										onClick={() => {
-											dispatch(removeTranslitModel(d.name))
-										}}
-										tooltip="Удалить"
-										icon={<i className="icons10-cross"></i>}
-									/>
-								</div>
-								<div className={s.buttons_container__box}>
-									<ButtonIcon
-										onClick={() => {
-											navigate('/editor/' + d.name)
-										}}
-										tooltip="Редактировать"
-										icon={<i className="icons10-pencil"></i>}
-									/>
-								</div>
-								<div className={s.buttons_container__box}>
-									<div style={{float: 'right'}}>
-										{isActivated ? (
-											<Button value="Установлено" disabled={true} />
-										) : (
-											<Button
-												onClick={() => dispatch(setLanguageModel(d.name))}
-												value="Установить"
-											/>
-										)}
-									</div>
+
+			<div key={index} onClick={() => dispatch(setLanguageModel(d.name))}>
+				<ListItem
+					title={d.title}
+					subtitle={transliterText}
+					borderBottom={false}
+					ItemEndComponent={
+						<div className={s.buttons_container}>
+							<div className={s.buttons_container__box}>
+								<ButtonIcon
+									onClick={() => {
+										dispatch(removeTranslitModel(d.name))
+									}}
+									tooltip="Удалить"
+									icon={<i className="icons10-cross"></i>}
+								/>
+							</div>
+							<div className={s.buttons_container__box}>
+								<ButtonIcon
+									onClick={() => {
+										navigate('/editor/' + d.name)
+									}}
+									tooltip="Редактировать"
+									icon={<i className="icons10-pencil"></i>}
+								/>
+							</div>
+							<div className={s.buttons_container__box}>
+								<div style={{float: 'right'}}>
+									{isActivated ? (
+										<Button value="Установлено" disabled={true} />
+									) : (
+										<Button onClick={() => dispatch(setLanguageModel(d.name))} value="Установить" />
+									)}
 								</div>
 							</div>
-						}
-					/>
-				</div>
-			</>
+						</div>
+					}
+				/>
+			</div>
 		)
 	})
 
